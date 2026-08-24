@@ -10,6 +10,10 @@ export default function App() {
       <Route path='/cards/:slug' element={<CardsPage />} />
       <Route path='/asesores' element={<AsesoresPage />} />
       <Route
+        path='/asesores-greenway'
+        element={<AsesoresPage variante='greenway' />}
+      />
+      <Route
         path='*'
         element={
           <div className='p-6'>
