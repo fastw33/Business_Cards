@@ -1,5 +1,6 @@
 import React from 'react'
-import { GlobeHemisphereWest, WhatsappLogo } from 'phosphor-react'
+import { EnvelopeSimple, GlobeHemisphereWest, WhatsappLogo } from 'phosphor-react'
+import { buildMailtoLink } from '../utils/links'
 import './asesores.css'
 
 const asesores = {
@@ -8,6 +9,7 @@ const asesores = {
     cargo: 'Representación en Estados Unidos y Latinoamérica',
     foto: '/avatar2.webp',
     whatsapp: '573182123378',
+    email: 'gsanchez@greenwayinter.com',
   },
   cristinaAvendano: {
     nombre: 'Cristina Avendaño',
@@ -26,6 +28,7 @@ const asesores = {
     cargo: 'Representación en Estados Unidos y Latinoamérica',
     foto: '/Gian.webp',
     whatsapp: '17866610046',
+    email: 'gc@greenwayinter.com',
   },
   carollHuertas: {
     nombre: 'Caroll Mishel Huertas Rojas',
@@ -51,6 +54,7 @@ const asesores = {
     cargo: 'Representación en Colombia',
     foto: '/karen.png',
     whatsapp: '573143002760',
+    email: 'insales@greenwayinter.com',
   },
   claudiaMorales: {
     nombre: 'Claudia Morales',
@@ -92,7 +96,10 @@ const seccionesAsesoresGreenway = [
         ...asesores.karenGonzalez,
         foto: '/karen-greenway.jpg',
       },
-      asesores.paolaGarzon,
+      {
+        ...asesores.paolaGarzon,
+        foto: '/paola-greenway.jpg',
+      },
       {
         ...asesores.giancarloAvendano,
         foto: '/giancarlo-greenway.webp',
@@ -143,6 +150,73 @@ function crearUrlWhatsApp(telefono, mensaje) {
 
   const mensajeCodificado = encodeURIComponent(mensaje)
   return `https://wa.me/${telefono}?text=${mensajeCodificado}`
+}
+
+function AsesorContenido({ asesor, whatsappUrl, enlazarWhatsapp = true }) {
+  const emailUrl = asesor.email ? buildMailtoLink(asesor.email) : ''
+
+  return (
+    <>
+      {asesor.foto && (
+        <div className='asesor-avatar-wrap'>
+          <img
+            src={asesor.foto}
+            alt={asesor.nombre}
+            className='asesor-avatar'
+            loading='lazy'
+          />
+          <span className='asesor-avatar-ring asesor-avatar-ring--one' />
+          <span className='asesor-avatar-ring asesor-avatar-ring--two' />
+        </div>
+      )}
+      <div className='asesor-content'>
+        <h2>{asesor.nombre}</h2>
+        <p>{asesor.cargo}</p>
+        <div className='asesor-actions'>
+          {whatsappUrl && enlazarWhatsapp && (
+            <a
+              href={whatsappUrl}
+              target='_blank'
+              rel='noreferrer'
+              className='asesor-action asesor-action--whatsapp'
+              aria-label={`Contactar a ${asesor.nombre} por WhatsApp`}
+            >
+              <WhatsappLogo
+                className='asesor-whatsapp-icon'
+                weight='fill'
+                aria-hidden='true'
+              />
+              Abrir WhatsApp
+            </a>
+          )}
+          {whatsappUrl && !enlazarWhatsapp && (
+            <span className='asesor-action asesor-action--whatsapp'>
+              <WhatsappLogo
+                className='asesor-whatsapp-icon'
+                weight='fill'
+                aria-hidden='true'
+              />
+              Abrir WhatsApp
+            </span>
+          )}
+          {emailUrl && (
+            <a
+              href={emailUrl}
+              className='asesor-action asesor-action--email'
+              aria-label={`Enviar correo a ${asesor.nombre}`}
+            >
+              <EnvelopeSimple
+                className='asesor-email-icon'
+                weight='bold'
+                aria-hidden='true'
+              />
+              {asesor.email}
+            </a>
+          )}
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default function AsesoresPage({ variante = 'harvest' }) {
@@ -203,6 +277,20 @@ export default function AsesoresPage({ variante = 'harvest' }) {
               {seccion.asesores.map((asesor, index) => {
                 const mensaje = crearMensaje(asesor, pagina.sitio)
                 const url = crearUrlWhatsApp(asesor.whatsapp, mensaje)
+                const delay = (seccionIndex * 4 + index) * 80
+
+                if (asesor.email) {
+                  return (
+                    <article
+                      key={`${asesor.whatsapp || asesor.nombre}-${index}`}
+                      className='asesor-card'
+                      data-aos='fade-up'
+                      data-aos-delay={delay}
+                    >
+                      <AsesorContenido asesor={asesor} whatsappUrl={url} />
+                    </article>
+                  )
+                }
 
                 return (
                   <a
@@ -213,32 +301,13 @@ export default function AsesoresPage({ variante = 'harvest' }) {
                     className='asesor-card'
                     aria-label={`Contactar a ${asesor.nombre} por WhatsApp`}
                     data-aos='fade-up'
-                    data-aos-delay={(seccionIndex * 4 + index) * 80}
+                    data-aos-delay={delay}
                   >
-                    {asesor.foto && (
-                      <div className='asesor-avatar-wrap'>
-                        <img
-                          src={asesor.foto}
-                          alt={asesor.nombre}
-                          className='asesor-avatar'
-                          loading='lazy'
-                        />
-                        <span className='asesor-avatar-ring asesor-avatar-ring--one' />
-                        <span className='asesor-avatar-ring asesor-avatar-ring--two' />
-                      </div>
-                    )}
-                    <div className='asesor-content'>
-                      <h2>{asesor.nombre}</h2>
-                      <p>{asesor.cargo}</p>
-                      <span>
-                        <WhatsappLogo
-                          className='asesor-whatsapp-icon'
-                          weight='fill'
-                          aria-hidden='true'
-                        />
-                        Abrir WhatsApp
-                      </span>
-                    </div>
+                    <AsesorContenido
+                      asesor={asesor}
+                      whatsappUrl={url}
+                      enlazarWhatsapp={false}
+                    />
                   </a>
                 )
               })}

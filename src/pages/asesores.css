@@ -149,7 +149,7 @@
   color: var(--as-muted);
 }
 
-.asesores-page--greenway .asesor-content span {
+.asesores-page--greenway .asesor-action {
   background: linear-gradient(
     90deg,
     rgba(28, 110, 164, 0.16),
@@ -159,6 +159,12 @@
   border-color: rgba(28, 110, 164, 0.34);
   color: var(--as-blue);
   text-transform: uppercase;
+}
+
+.asesores-page--greenway .asesor-action--email {
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--as-ink);
+  text-transform: none;
 }
 
 .asesores-shell {
@@ -387,11 +393,18 @@
   overflow-wrap: anywhere;
 }
 
-.asesor-content span {
+.asesor-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 3px;
+}
+
+.asesor-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 3px;
   border-radius: 999px;
   padding: 3px 6px;
   background: rgba(0, 137, 107, 0.11);
@@ -400,14 +413,27 @@
   font-size: 0.49rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  text-decoration: none;
 }
 
-.asesor-whatsapp-icon {
+.asesor-whatsapp-icon,
+.asesor-email-icon {
   width: 1em;
   height: 1em;
   margin-right: 5px;
   flex: 0 0 auto;
+}
+
+.asesor-whatsapp-icon {
   color: #25d366;
+}
+
+.asesor-email-icon {
+  color: currentColor;
 }
 
 @keyframes asesor-float {
@@ -518,8 +544,12 @@
     font-size: 0.52rem;
   }
 
-  .asesor-content span {
+  .asesor-actions {
     margin-top: 4px;
+    gap: 4px;
+  }
+
+  .asesor-action {
     padding: 3px 6px;
     font-size: 0.49rem;
   }
@@ -610,8 +640,12 @@
     font-size: 0.78rem;
   }
 
-  .asesor-content span {
+  .asesor-actions {
     margin-top: 8px;
+    gap: 6px;
+  }
+
+  .asesor-action {
     padding: 6px 10px;
     font-size: 0.68rem;
   }
