@@ -1,6 +1,6 @@
 import React from 'react'
 import { EnvelopeSimple, GlobeHemisphereWest, WhatsappLogo } from 'phosphor-react'
-import { buildMailtoLink } from '../utils/links'
+import { buildGmailComposeLink, buildMailtoLink } from '../utils/links'
 import './asesores.css'
 
 const asesores = {
@@ -153,12 +153,19 @@ function crearUrlWhatsApp(telefono, mensaje) {
 }
 
 function abrirCorreo(event, emailUrl) {
-  event.preventDefault()
-  window.location.href = emailUrl
+  const esDispositivoMovil = /Android|iPhone|iPad|iPod|Mobile/i.test(
+    window.navigator.userAgent,
+  )
+
+  if (esDispositivoMovil) {
+    event.preventDefault()
+    window.location.href = emailUrl
+  }
 }
 
 function AsesorContenido({ asesor, whatsappUrl, enlazarWhatsapp = true }) {
   const emailUrl = asesor.email ? buildMailtoLink(asesor.email) : ''
+  const gmailUrl = asesor.email ? buildGmailComposeLink(asesor.email) : ''
 
   return (
     <>
@@ -206,8 +213,10 @@ function AsesorContenido({ asesor, whatsappUrl, enlazarWhatsapp = true }) {
           )}
           {emailUrl && (
             <a
-              href={emailUrl}
+              href={gmailUrl}
               onClick={(event) => abrirCorreo(event, emailUrl)}
+              target='_blank'
+              rel='noreferrer'
               className='asesor-action asesor-action--email'
               aria-label={`Enviar correo a ${asesor.nombre}`}
             >

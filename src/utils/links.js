@@ -21,3 +21,7 @@ export function buildMailtoLink(email, subject = "", body = "") {
   const qs = params.length ? `?${params.join("&")}` : "";
   return `mailto:${email}${qs}`;
 }
+
+export function buildGmailComposeLink(email) {
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+}
