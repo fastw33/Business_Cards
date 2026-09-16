@@ -152,6 +152,11 @@ function crearUrlWhatsApp(telefono, mensaje) {
   return `https://wa.me/${telefono}?text=${mensajeCodificado}`
 }
 
+function abrirCorreo(event, emailUrl) {
+  event.preventDefault()
+  window.location.href = emailUrl
+}
+
 function AsesorContenido({ asesor, whatsappUrl, enlazarWhatsapp = true }) {
   const emailUrl = asesor.email ? buildMailtoLink(asesor.email) : ''
 
@@ -202,6 +207,7 @@ function AsesorContenido({ asesor, whatsappUrl, enlazarWhatsapp = true }) {
           {emailUrl && (
             <a
               href={emailUrl}
+              onClick={(event) => abrirCorreo(event, emailUrl)}
               className='asesor-action asesor-action--email'
               aria-label={`Enviar correo a ${asesor.nombre}`}
             >
@@ -210,7 +216,10 @@ function AsesorContenido({ asesor, whatsappUrl, enlazarWhatsapp = true }) {
                 weight='bold'
                 aria-hidden='true'
               />
-              {asesor.email}
+              <span>
+                <strong>Enviar correo</strong>
+                {asesor.email}
+              </span>
             </a>
           )}
         </div>

@@ -394,11 +394,14 @@
 }
 
 .asesor-actions {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
   margin-top: 3px;
+  width: 100%;
 }
 
 .asesor-action {
@@ -418,6 +421,26 @@
   overflow-wrap: anywhere;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.asesor-action--email {
+  width: 100%;
+  min-height: 44px;
+  padding: 6px 8px;
+}
+
+.asesor-action--email > span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.asesor-action--email strong {
+  font-size: 0.52rem;
+  text-transform: uppercase;
 }
 
 .asesor-whatsapp-icon,
