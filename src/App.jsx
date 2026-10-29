@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom'
 import CardsPage from './pages/Cards'
 import AsesoresPage from './pages/Asesores'
+import FastwayPage from './pages/Fastway'
 
 export default function App() {
   return (
@@ -9,6 +10,10 @@ export default function App() {
       <Route path='/' element={<HomeRoute />} />
       <Route path='/cards/:slug' element={<CardsPage />} />
       <Route path='/asesores' element={<AsesoresPage />} />
+      <Route path='/asesores-fastway' element={<FastwayPage />} />
+      <Route path='/fastway.html' element={<FastwayPage />} />
+      <Route path='/asesorias-fastway' element={<Navigate to='/asesores-fastway' replace />} />
+      <Route path='/fastway' element={<Navigate to='/asesores-fastway' replace />} />
       <Route
         path='/asesores-greenway'
         element={<AsesoresPage variante='greenway' />}

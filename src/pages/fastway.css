@@ -1,0 +1,989 @@
+@font-face {
+  font-family: FastwayManrope;
+  src: url('/fastway/manrope-latin.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 200 800;
+}
+body.fwd-directory {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+.fwd-directory-page {
+  box-sizing: border-box;
+  --fwd-ink: #282828;
+  --fwd-orange: #f74c1b;
+  min-height: 100dvh;
+  padding: 24px 20px 16px;
+  font-family: FastwayManrope, 'Segoe UI', sans-serif;
+  color: var(--fwd-ink);
+  background:
+    radial-gradient(ellipse at 14% 0%, #ffffff00, transparent 52%),
+    linear-gradient(145deg, #ffffff, #f8f8f8 46%, #f5f5f5);
+}
+.fwd-directory-page * {
+  box-sizing: border-box;
+}
+.fwd-directory-page h1,
+.fwd-directory-page h2,
+.fwd-directory-page p {
+  margin: 0;
+}
+.fwd-directory-page a {
+  color: inherit;
+  text-decoration: none;
+}
+.fwd-directory-page button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+}
+.fwd-directory-page a:focus-visible,
+.fwd-directory-page button:focus-visible {
+  outline: 3px solid #f74c1b;
+  outline-offset: 3px;
+  box-shadow: none;
+  border-radius: 4px;
+}
+.fwd-directory-page svg {
+  flex-shrink: 0;
+}
+.fwd-shell {
+  width: min(640px, 100%);
+  margin-inline: auto;
+}
+.fwd-header {
+  text-align: center;
+  padding-bottom: 23px;
+}
+.fwd-brand {
+  position: relative;
+  display: inline-block;
+  width: 173px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.fwd-brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fwd-brand > span {
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    #fff9 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.fwd-ready .fwd-header .fwd-brand > span {
+  animation: fwd-logo-shine 1.5s 0.25s both;
+}
+.fwd-company {
+  display: block;
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  color: #707070;
+  margin-top: 10px;
+  font-weight: 650;
+}
+.fwd-header h1 {
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  margin-top: 9px;
+}
+.fwd-header p {
+  font-size: 11px;
+  color: #737373;
+  margin-top: 7px;
+}
+.fwd-contact {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  border-radius: 13px;
+  background: linear-gradient(150deg, #ffffff, #ffffffed 45%, #fafafa);
+  box-shadow:
+    0 12px 30px #0000000b,
+    inset 0 1px 0 #fff;
+  text-align: center;
+  min-width: 0;
+  padding: 21px 24px 15px;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s,
+    border-color 0.4s;
+}
+.fwd-contact > :not(.fwd-card-art) {
+  position: relative;
+  z-index: 1;
+}
+.fwd-contact:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #f74c1b,
+    #f86b25 45%,
+    #f74c1b 70%,
+    transparent
+  );
+}
+.fwd-contact:after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    #fff9 47%,
+    transparent 75%
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+}
+.fwd-card-art {
+  position: absolute;
+  z-index: 0;
+  top: -15px;
+  right: -31px;
+  width: 137px;
+  height: 137px;
+  color: #f86b25;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.fwd-card-art svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1;
+  transform-origin: center;
+}
+.fwd-contact-ceo .fwd-card-art {
+  width: 180px;
+  height: 180px;
+  top: -34px;
+  right: 18px;
+  color: #1685c1;
+  opacity: 0.2;
+}
+.fwd-ready .fwd-card-art svg {
+  animation: fwd-mark-drift 7s ease-in-out infinite alternate;
+}
+.fwd-ready .fwd-contact-ceo .fwd-card-art svg {
+  animation-name: fwd-ceo-mark-drift;
+  animation-duration: 5.5s;
+}
+.fwd-ready .fwd-contact:after {
+  animation: fwd-card-light 8s 1.4s ease-in-out infinite;
+}
+.fwd-ready .fwd-advisors-grid .fwd-contact:nth-child(2):after {
+  animation-delay: 3.4s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .fwd-contact:hover {
+    transform: perspective(900px) translateY(-5px) rotateX(2deg);
+    border-color: #f86b25;
+    box-shadow: 0 18px 34px #00000018;
+  }
+  .fwd-contact:hover .fwd-portrait img {
+    transform: scale(calc(var(--fwd-photo-scale, 1) * 1.055));
+  }
+}
+.fwd-contact:focus-within {
+  border-color: #f86b25;
+}
+.fwd-contact-actions a:active {
+  transform: scale(0.96);
+}
+.fwd-contact-actions .fwd-whatsapp > svg:last-child {
+  transition: transform 0.25s;
+}
+.fwd-contact-actions .fwd-whatsapp:hover > svg:last-child {
+  transform: translate(2px, -2px);
+}
+.fwd-contact-actions .fwd-whatsapp {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px #00000015;
+}
+.fwd-contact-actions .fwd-whatsapp:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    #fff2 50%,
+    transparent 75%
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+}
+.fwd-ready .fwd-whatsapp:after {
+  animation: fwd-card-light 7s 3s ease-in-out infinite;
+}
+.fwd-advisors-grid .fwd-contact:nth-child(2) .fwd-whatsapp:after {
+  animation-delay: 4.5s;
+}
+.fwd-portrait-orbit {
+  position: absolute;
+  inset: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  overflow: visible;
+  pointer-events: none;
+}
+.fwd-portrait-orbit rect {
+  stroke: #f74c1b;
+  stroke-width: 1.6;
+  stroke-dasharray: 18 82;
+  stroke-linecap: round;
+}
+.fwd-ready .fwd-portrait-orbit rect {
+  animation: fwd-photo-orbit 5.5s linear infinite;
+}
+.fwd-advisors-grid .fwd-contact:nth-child(2) .fwd-portrait-orbit rect {
+  animation-delay: -2.5s;
+}
+.fwd-contact-ceo .fwd-portrait-orbit rect {
+  stroke: #f86b25;
+}
+.fwd-ready .fwd-advisors-grid .fwd-portrait {
+  animation: fwd-photo-float 5s 1s ease-in-out infinite;
+}
+.fwd-ready .fwd-advisors-grid .fwd-contact:nth-child(2) .fwd-portrait {
+  animation-delay: 2.3s;
+}
+.fwd-portrait img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes fwd-photo-orbit {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+@keyframes fwd-photo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes fwd-card-light {
+  0%,
+  68% {
+    transform: translateX(-150%);
+  }
+  90%,
+  100% {
+    transform: translateX(150%);
+  }
+}
+@keyframes fwd-mark-drift {
+  from {
+    transform: rotate(-12deg) scale(0.96);
+  }
+  to {
+    transform: rotate(8deg) scale(1.04);
+  }
+}
+@keyframes fwd-ceo-mark-drift {
+  from {
+    transform: translate(-14px, 8px) rotate(-25deg) scale(0.94);
+  }
+  to {
+    transform: translate(14px, -10px) rotate(22deg) scale(1.08);
+  }
+}
+.fwd-motion-paused *,
+.fwd-motion-paused *:before,
+.fwd-motion-paused *:after {
+  animation-play-state: paused !important;
+}
+.fwd-motion-paused .fwd-contact {
+  animation: none;
+}
+.fwd-motion-paused .fwd-entrance,
+.fwd-motion-paused .fwd-entrance * {
+  animation-play-state: running !important;
+}
+.fwd-motion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 2px auto 0;
+  min-height: 36px;
+  color: #737373;
+  background: none;
+  font-size: 8px !important;
+}
+.fwd-motion-toggle:hover {
+  color: #282828;
+}
+.fwd-brochures {
+  margin-top: 24px;
+}
+.fwd-brochure-list {
+  display: grid;
+  gap: 9px;
+}
+.fwd-brochure {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  background: #ffffffed;
+  padding: 8px 10px;
+  box-shadow: 0 6px 18px #00000005;
+}
+.fwd-brochure-open {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex: 1;
+  min-width: 0;
+  min-height: 55px;
+}
+.fwd-brochure-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #282828;
+  width: 41px;
+  height: 54px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #eeeeee;
+  box-shadow: 1px 3px 7px #00000020;
+  flex-shrink: 0;
+}
+.fwd-brochure-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fwd-brochure-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.fwd-brochure-copy strong {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.fwd-brochure-copy small {
+  color: #737373;
+  font-size: 9px;
+}
+.fwd-brochure-open > svg {
+  margin-left: auto;
+  margin-right: 8px;
+  color: #282828;
+  transition: transform 0.2s;
+}
+.fwd-brochure-open:hover > svg {
+  transform: translate(2px, -2px);
+}
+.fwd-brochure-download {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #282828 !important;
+  border-left: 1px solid #e5e5e5;
+}
+.fwd-brochure-download:hover {
+  background: #f2f2f2;
+  border-radius: 4px;
+}
+.fwd-brochures-empty {
+  text-align: center;
+  color: #737373;
+  font-size: 11px;
+  padding: 15px;
+  border: 1px dashed #d5d5d5;
+  border-radius: 6px;
+}
+.fwd-portrait {
+  position: relative;
+}
+.fwd-portrait {
+  width: 112px;
+  height: 112px;
+  padding: 5px;
+  border: 1px solid #e5e5e5;
+  border-radius: 13px;
+  margin: 0 auto 14px;
+  background: #ffffff;
+  box-shadow: 0 5px 12px #00000007;
+}
+.fwd-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  border-radius: 8px;
+  transform: scale(var(--fwd-photo-scale, 1));
+  transform-origin: center 22%;
+}
+.fwd-photo-crop {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.fwd-person-info h2 {
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+.fwd-person-info p {
+  color: #737373;
+  font-size: 10px;
+  line-height: 1.5;
+  margin-top: 5px;
+  min-height: 30px;
+}
+.fwd-contact-actions {
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  gap: 7px;
+  margin-top: 15px;
+}
+.fwd-contact-actions > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 650;
+  transition: background 0.2s;
+}
+.fwd-contact-actions .fwd-whatsapp {
+  grid-column: 1 / -1;
+  color: #123e5b;
+  background: #7dd3fc;
+  min-height: 44px;
+  border: 1px solid #63c7f5;
+}
+.fwd-contact-actions .fwd-whatsapp > svg:last-child {
+  margin-left: 7px;
+}
+.fwd-contact-actions .fwd-whatsapp:hover {
+  background: #50c4f7;
+}
+.fwd-contact-actions .fwd-email,
+.fwd-contact-actions .fwd-call {
+  border: 1px solid #e5e5e5;
+  background: #ffffff;
+  color: #606060;
+}
+.fwd-contact-actions .fwd-email:hover,
+.fwd-contact-actions .fwd-call:hover {
+  background: #f3f3f3;
+}
+.fwd-contact-ceo {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  text-align: left;
+  align-items: center;
+  column-gap: 18px;
+  padding: 21px 24px;
+  border-color: #a8d9f4;
+  background: linear-gradient(118deg, #e5f5ff, #ccecff 65%, #bde5fc);
+  box-shadow:
+    0 13px 28px #278dc01a,
+    inset 0 1px 0 #ffffffb3;
+  color: #153f5d;
+}
+.fwd-contact-ceo:before {
+  background: linear-gradient(90deg, #f74c1b, #f86b25 45%, transparent);
+}
+.fwd-contact-ceo:after {
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    #ffffff10 47%,
+    transparent 75%
+  );
+}
+.fwd-contact-ceo .fwd-email,
+.fwd-contact-ceo .fwd-call {
+  color: #285c7d;
+  border-color: #a8d6f0;
+  background: #ffffff94;
+}
+.fwd-contact-ceo .fwd-email:hover,
+.fwd-contact-ceo .fwd-call:hover {
+  background: #ffffffd9;
+}
+.fwd-contact-ceo .fwd-portrait {
+  width: 76px;
+  height: 81px;
+  margin: 0;
+  padding: 4px;
+}
+.fwd-ceo-tag {
+  font-size: 7px;
+  color: #28709a;
+  letter-spacing: 0.12em;
+  display: block;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+.fwd-contact-ceo .fwd-person-info h2 {
+  font-size: 22px;
+}
+.fwd-contact-ceo .fwd-person-info p {
+  min-height: 0;
+  font-size: 11px;
+  color: #416b86;
+}
+.fwd-contact-ceo .fwd-contact-actions {
+  width: 155px;
+  margin: 0;
+  gap: 6px;
+}
+.fwd-contact-ceo .fwd-whatsapp {
+  background: #f74c1b;
+  border-color: #f74c1b;
+  color: #111111;
+}
+.fwd-contact-ceo .fwd-whatsapp:hover {
+  background: #f86b25;
+}
+.fwd-advisors {
+  margin-top: 23px;
+}
+.fwd-section-label {
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: #686868;
+  font-weight: 700;
+  margin-bottom: 13px !important;
+}
+.fwd-advisors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+@media (min-width: 601px) {
+  .fwd-advisors-grid:has(> .fwd-contact:nth-child(3)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .fwd-advisors-grid:has(> .fwd-contact:nth-child(3)) > .fwd-contact {
+    padding-inline: 14px;
+  }
+  .fwd-advisors-grid:has(> .fwd-contact:nth-child(3)) .fwd-person-info h2 {
+    font-size: 17px;
+  }
+}
+.fwd-footer {
+  margin-top: 22px;
+}
+.fwd-footer nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 9px;
+}
+.fwd-footer nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #737373;
+  min-height: 44px;
+  font-size: 10px;
+}
+.fwd-footer nav a:hover {
+  color: #282828;
+}
+.fwd-footer nav a > svg:last-child {
+  color: #8a8a8a;
+}
+.fwd-genika {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: fit-content;
+  margin: 9px auto 0;
+  min-height: 28px;
+}
+.fwd-genika span {
+  font-size: 8px;
+  color: #808080;
+}
+.fwd-genika img {
+  display: block;
+  width: 44px;
+  height: 22px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.fwd-contact:target {
+  outline: 2px solid #f74c1b;
+  outline-offset: 3px;
+}
+.fwd-ready .fwd-contact {
+  animation: fwd-reveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.fwd-ready .fwd-advisors-grid .fwd-contact:nth-child(1) {
+  animation-delay: 0.18s;
+}
+.fwd-ready .fwd-advisors-grid .fwd-contact:nth-child(2) {
+  animation-delay: 0.33s;
+}
+/* Faithful to the Clients Fastway entrance, with an immediate skip action. */
+.fwd-entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  perspective: 1400px;
+  overflow: clip;
+  animation: fwd-door-finish 2.4s linear both;
+  background: #f4f4f4;
+}
+.fwd-entrance-room {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 46%,
+    #ffffff 0%,
+    #fafafa 35%,
+    #f4f4f4 72%,
+    #eeeeee 100%
+  );
+}
+.fwd-entrance-sign {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  animation: fwd-door-sign 2.4s ease both;
+}
+.fwd-entrance-sign .fwd-brand {
+  width: min(310px, calc(100vw - 64px));
+  filter: drop-shadow(0 0 28px #f86b2533);
+}
+.fwd-entrance-sign > span:not(.fwd-brand) {
+  color: #606060;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+}
+.fwd-door {
+  position: absolute;
+  z-index: 1;
+  inset-block: 0;
+  width: 50%;
+  background: linear-gradient(100deg, #eeeeee, #fafafa 75%, #dddddd);
+  border: 1px solid #d5d5d5;
+  backface-visibility: hidden;
+  box-shadow: 0 0 60px #00000020;
+  animation: fwd-door-left 1.3s 0.12s cubic-bezier(0.65, 0, 0.2, 1) both;
+}
+.fwd-door:before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 1px solid #d5d5d5;
+}
+.fwd-door:after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  right: 22px;
+  width: 4px;
+  height: 70px;
+  border-radius: 4px;
+  background: #f74c1b;
+  box-shadow: 0 0 25px #f74c1b20;
+}
+.fwd-door-left {
+  left: 0;
+  transform-origin: left center;
+  border-right: 2px solid #f74c1b;
+}
+.fwd-door-right {
+  right: 0;
+  transform-origin: right center;
+  border-left: 2px solid #f74c1b;
+  background: linear-gradient(260deg, #eeeeee, #fafafa 75%, #dddddd);
+  animation-name: fwd-door-right;
+}
+.fwd-door-right:after {
+  right: auto;
+  left: 22px;
+}
+.fwd-skip-intro {
+  position: absolute;
+  z-index: 3;
+  right: 20px;
+  top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 10px !important;
+  color: #606060;
+  background: transparent;
+  padding: 0 7px;
+}
+@keyframes fwd-door-left {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(-105deg);
+  }
+}
+@keyframes fwd-door-right {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(105deg);
+  }
+}
+@keyframes fwd-door-sign {
+  0%,
+  55% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  65%,
+  82% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+}
+@keyframes fwd-door-finish {
+  0%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes fwd-logo-shine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes fwd-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (min-width: 900px) and (min-height: 800px) {
+  .fwd-directory-page {
+    padding-top: 45px;
+  }
+}
+@media (max-width: 600px) {
+  .fwd-directory-page {
+    padding: 18px 16px 12px;
+  }
+  .fwd-header {
+    padding-bottom: 20px;
+  }
+  .fwd-brand {
+    width: 153px;
+  }
+  .fwd-company {
+    font-size: 6px;
+    margin-top: 8px;
+  }
+  .fwd-header h1 {
+    font-size: 22px;
+    margin-top: 8px;
+  }
+  .fwd-header p {
+    font-size: 10px;
+    margin-top: 5px;
+  }
+  .fwd-contact-ceo {
+    grid-template-columns: 62px minmax(0, 1fr);
+    column-gap: 13px;
+    padding: 17px 16px 14px;
+  }
+  .fwd-contact-ceo .fwd-portrait {
+    width: 62px;
+    height: 66px;
+  }
+  .fwd-contact-ceo .fwd-person-info h2 {
+    font-size: 20px;
+  }
+  .fwd-ceo-tag {
+    font-size: 6px;
+    margin-bottom: 5px;
+  }
+  .fwd-contact-ceo .fwd-person-info p {
+    font-size: 10px;
+  }
+  .fwd-contact-ceo .fwd-contact-actions {
+    grid-column: 1 / -1;
+    width: 100%;
+    grid-template-columns: 1.25fr 1fr 44px;
+    margin-top: 13px;
+  }
+  .fwd-contact-ceo .fwd-whatsapp {
+    grid-column: auto;
+  }
+  .fwd-contact-ceo .fwd-contact-actions > a {
+    min-height: 44px;
+  }
+  .fwd-advisors {
+    margin-top: 19px;
+  }
+  .fwd-section-label {
+    font-size: 8px;
+    margin-bottom: 11px !important;
+  }
+  .fwd-advisors-grid {
+    gap: 12px;
+  }
+  .fwd-advisors-grid > .fwd-contact:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc((100% - 12px) / 2);
+    justify-self: center;
+  }
+  .fwd-advisors-grid .fwd-contact {
+    padding: 17px 11px 11px;
+  }
+  .fwd-portrait {
+    width: 96px;
+    height: 96px;
+    padding: 4px;
+    margin-bottom: 12px;
+  }
+  .fwd-person-info h2 {
+    font-size: 16px;
+  }
+  .fwd-person-info p {
+    font-size: 9px;
+    min-height: 29px;
+    margin-top: 5px;
+  }
+  .fwd-contact-actions {
+    margin-top: 11px;
+    gap: 6px;
+    grid-template-columns: 1fr 44px;
+  }
+  .fwd-contact-actions > a {
+    font-size: 9px;
+    gap: 5px;
+    min-height: 44px;
+  }
+  .fwd-contact-actions .fwd-whatsapp {
+    min-height: 44px;
+  }
+  .fwd-contact-actions .fwd-whatsapp > svg:last-child {
+    margin-left: 0;
+    width: 12px;
+  }
+  .fwd-footer {
+    margin-top: 18px;
+  }
+  .fwd-footer nav {
+    gap: 18px;
+    padding-top: 6px;
+  }
+  .fwd-footer nav a {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .fwd-genika {
+    margin-top: 4px;
+  }
+}
+@media (max-width: 350px) {
+  .fwd-directory-page {
+    padding-inline: 12px;
+  }
+  .fwd-advisors-grid {
+    gap: 9px;
+  }
+  .fwd-advisors-grid .fwd-contact {
+    padding-inline: 8px;
+  }
+  .fwd-person-info h2 {
+    font-size: 14px;
+  }
+  .fwd-contact-actions > a {
+    font-size: 8px;
+  }
+  .fwd-contact-actions .fwd-whatsapp > svg:last-child {
+    display: none;
+  }
+  .fwd-portrait {
+    width: 86px;
+    height: 86px;
+  }
+  .fwd-footer nav {
+    gap: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fwd-directory-page *,
+  .fwd-directory-page *:before,
+  .fwd-directory-page *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .fwd-entrance {
+    display: none;
+  }
+}

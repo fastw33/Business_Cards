@@ -1,3 +1,8 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/asesores-fastway", "destination": "/fastway.html" },
+    { "source": "/asesorias-fastway", "destination": "/fastway.html" },
+    { "source": "/fastway", "destination": "/fastway.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
