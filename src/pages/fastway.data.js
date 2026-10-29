@@ -9,7 +9,7 @@ export const fastwayPeople = [
     id: 'gina',
     name: 'Gina Sánchez',
     fullName: 'Gina Sánchez',
-    role: 'CEO · Gerente General',
+    role: 'CEO',
     image: '/fastway/gina.webp',
     phone: '+57 318 212 3378',
     email: 'gsanchez@fastwaysas.com',
