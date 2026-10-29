@@ -1,0 +1,148 @@
+@font-face { font-family: TliManrope; src: url('/tli/manrope-latin.woff2') format('woff2'); font-weight: 200 800; font-display: swap; }
+body.tli-directory { margin: 0; padding: 0; background: #f0f3f0; }
+.tli-page { --tli-ink: #073b53; --tli-mint: #c3efbc; --tli-muted: #52655e; box-sizing: border-box; min-height: 100dvh; padding: 30px 24px 16px; font-family: TliManrope, 'Segoe UI', sans-serif; background: #f0f3f0; color: var(--tli-ink); line-height: 1.5; color-scheme: light; }
+.tli-page *, .tli-page *::before, .tli-page *::after { box-sizing: border-box; }
+.tli-page h1, .tli-page h2, .tli-page h3, .tli-page p { margin: 0; }
+.tli-page a { color: inherit; text-decoration: none; }
+.tli-page button { font: inherit; border: 0; cursor: pointer; }
+.tli-page a:focus-visible, .tli-page button:focus-visible { outline: 3px solid #0879b4; outline-offset: 4px; border-radius: 5px; }
+.tli-page svg { flex-shrink: 0; }
+.tli-shell { width: min(780px, 100%); margin-inline: auto; }
+.tli-header-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 21px; border-bottom: 1px solid #ced8d0; }
+.tli-brand { display: block; width: 176px; height: auto; }
+.tli-location { display: flex; align-items: center; gap: 6px; font-size: 9px; font-weight: 750; letter-spacing: .09em; color: #52655e; }
+.tli-header-copy { position: relative; isolation: isolate; padding: 33px 0 32px; }
+.tli-eyebrow { display: block; font-size: 8px; font-weight: 750; letter-spacing: .15em; color: #52655e; margin-bottom: 12px; }
+.tli-header h1 { font-size: clamp(36px, 5vw, 48px); font-weight: 800; line-height: 1.1; letter-spacing: -.065em; }
+.tli-header h1 > span { color: #18724e; }
+.tli-header p { font-size: 12px; color: #52655e; margin-top: 13px; }
+.tli-header-route { position: absolute; z-index: -1; width: 200px; right: 0; top: 35px; overflow: visible; }
+.tli-header-route path { stroke: #acc8b2; stroke-width: 1.1; stroke-dasharray: 4 6; }
+.tli-header-route circle { fill: #338362; }
+.tli-team-label { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid #ced8d0; padding: 15px 0; }
+.tli-section-label { font-size: 9px; font-weight: 800; letter-spacing: .13em; }
+.tli-team-label > span { display: flex; align-items: center; gap: 8px; font-size: 8px; font-weight: 650; letter-spacing: .08em; color: #52655e; }
+.tli-team-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.tli-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 20px 22px 18px;
+  border-radius: 15px;
+  color: #073b53;
+  background: #fff;
+  border: 1px solid #ffffff;
+  box-shadow: 0 3px 5px #073b5303, 0 14px 32px -16px #073b5326;
+  transition: transform .35s, box-shadow .35s;
+  scroll-margin-top: 18px;
+}
+.tli-card::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(120deg, transparent 20%, #f0f8fb 70%, #e9f2f5); clip-path: polygon(65% 0, 100% 0, 100% 100%, 88% 100%, 46% 0); pointer-events: none; }
+.tli-card::after { content: ''; position: absolute; bottom: 0; left: 22px; right: 22px; height: 3px; border-radius: 3px 3px 0 0; background: linear-gradient(90deg, #2cad3f 0%, #0a4eb6 70%, #0a4eb6); transform-origin: left; pointer-events: none; }
+.tli-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; }
+.tli-card-top > span { position: relative; font-size: 10px; font-weight: 750; color: #18724e; line-height: 1.35; max-width: 150px; }
+.tli-card-top > img { display: block; width: 94px; height: auto; flex-shrink: 0; mix-blend-mode: multiply; }
+.tli-person { min-width: 0; margin-top: 20px; }
+.tli-person h3 { font-size: 23px; letter-spacing: -.055em; font-weight: 800; line-height: 1.2; }
+.tli-phone { display: inline-flex; align-items: center; min-height: 28px; margin-top: 3px; font-size: 11px; color: #59707c !important; letter-spacing: .025em; }
+.tli-phone:hover { text-decoration: underline; }
+.tli-actions { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) 44px; gap: 7px; margin-top: 17px; }
+.tli-actions > a { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; border-radius: 7px; font-size: 10px; font-weight: 750; transition: background .2s, transform .2s; }
+.tli-actions .tli-whatsapp { position: relative; overflow: hidden; background: #0a4eb6; color: #fff; border: 1px solid #0a4eb6; box-shadow: 0 4px 8px #0a4eb615; }
+.tli-whatsapp::after { content: ''; position: absolute; inset: 0; transform: translateX(-150%); background: linear-gradient(110deg, transparent 25%, #ffffff30 50%, transparent 75%); pointer-events: none; }
+.tli-whatsapp > svg:last-child { display: none; }
+.tli-whatsapp:hover { background: #083e92; }
+.tli-email, .tli-call { border: 1px solid #dce5eb; color: #073b53 !important; background: #ffffffa6; }
+.tli-email:hover, .tli-call:hover { background: #eef4f8; }
+.tli-actions > a:active { transform: scale(.96); }
+.tli-alternate-email { align-self: flex-end; display: inline-flex; align-items: center; gap: 5px; min-height: 28px; margin-top: 4px; margin-bottom: -8px; font-size: 9px; color: #59707c !important; }
+.tli-alternate-email:hover { text-decoration: underline; }
+.tli-card:target { outline: 3px solid #208957; outline-offset: 3px; }
+.tli-footer { margin-top: 24px; border-top: 1px solid #ced8d0; }
+.tli-footer nav { display: flex; justify-content: space-between; gap: 16px; padding-top: 5px; }
+.tli-footer nav a { display: flex; align-items: center; gap: 6px; min-height: 44px; font-size: 10px; font-weight: 650; }
+.tli-footer nav a:hover { color: #18724e; }
+.tli-footer > p { font-size: 9px; color: #52655e; }
+.tli-genika { display: flex; align-items: center; justify-content: center; gap: 7px; width: fit-content; margin: 18px auto 0; min-height: 28px; font-size: 8px; color: #52655e !important; }
+.tli-genika img { width: 44px; height: 22px; object-fit: contain; mix-blend-mode: multiply; }
+.tli-motion-toggle { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 36px; margin: 0 auto; padding: 0 7px; background: transparent; color: #52655e; font-size: 9px !important; }
+.tli-brochures { margin-top: 24px; }
+.tli-brochures > h2 { margin-bottom: 12px; }
+.tli-brochure { display: flex; align-items: center; padding: 9px 12px; margin-top: 8px; background: #fff; border: 1px solid #ced8d0; border-radius: 4px; }
+.tli-brochure > a:first-child { display: flex; flex: 1; min-width: 0; align-items: center; gap: 12px; min-height: 52px; }
+.tli-brochure img { object-fit: cover; border-radius: 3px; }
+.tli-brochure strong, .tli-brochure small { display: block; }
+.tli-brochure strong { font-size: 12px; overflow-wrap: anywhere; }
+.tli-brochure small { font-size: 9px; color: #52655e; margin-top: 4px; }
+.tli-brochure > a:first-child > svg:last-child { margin-left: auto; }
+.tli-download { display: grid; place-items: center; min-width: 44px; min-height: 44px; border-left: 1px solid #ced8d0; margin-left: 8px; }
+/* A traced flight route introduces the logo. */
+.tli-entrance { position: fixed; z-index: 100; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 28px; overflow: clip; background: #f0f3f0; animation: tli-intro-exit .45s 1.65s ease-in both; }
+.tli-flight-scene { position: relative; width: 360px; height: 180px; flex-shrink: 0; transform: scale(.85); }
+.tli-flight-route { position: absolute; inset: 0; width: 360px; height: 180px; overflow: visible; }
+.tli-flight-guide { stroke: #cad9cf; stroke-width: 1; stroke-dasharray: 3 6; }
+.tli-flight-trace { stroke: #18724e; stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: tli-flight-draw 1.25s .1s cubic-bezier(.4,0,.15,1) both; }
+.tli-flight-route circle { fill: #18724e; }
+.tli-flight-origin { position: absolute; bottom: 0; left: 10px; font-size: 10px; font-weight: 750; letter-spacing: .2em; }
+.tli-flight-plane { position: absolute; top: 0; left: 0; display: grid; place-items: center; width: 32px; height: 32px; margin: -16px; color: #0a4eb6; offset-path: path('M20 150C85 150 60 35 165 55S250 145 340 25'); offset-rotate: auto; animation: tli-plane-fly 1.25s .1s cubic-bezier(.4,0,.15,1) both; }
+.tli-flight-plane svg { transform: rotate(45deg); background: #f0f3f0; }
+.tli-entrance-brand { display: flex; flex-direction: column; align-items: center; gap: 22px; animation: tli-logo-resolve .7s .45s cubic-bezier(.16,1,.3,1) both; }
+.tli-entrance-brand .tli-brand { width: min(265px, calc(100vw - 64px)); }
+.tli-entrance-brand > span { font-size: 8px; letter-spacing: .12em; color: #52655e; }
+.tli-skip { position: absolute; top: 16px; right: 18px; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 7px; background: transparent; color: #073b53; font-size: 10px !important; }
+.tli-ready .tli-card { animation: tli-slide-in .65s calc(var(--tli-order) * .1s) cubic-bezier(.16,1,.3,1) backwards; }
+.tli-ready .tli-card::after { animation: tli-edge-reveal 1s calc(var(--tli-order) * .15s + .2s) cubic-bezier(.16,1,.3,1) both; }
+.tli-ready .tli-whatsapp::after { animation: tli-button-light 8s calc(var(--tli-order) * 1.4s) ease-in-out infinite; }
+.tli-ready .tli-header-route path { animation: tli-route-flow 18s linear infinite; }
+.tli-motion-paused *, .tli-motion-paused *::before, .tli-motion-paused *::after { animation-play-state: paused !important; }
+@keyframes tli-slide-in { from { opacity: 0; transform: translateY(16px) rotateX(5deg); } to { opacity: 1; transform: none; } }
+@keyframes tli-edge-reveal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes tli-button-light { 0%, 70% { transform: translateX(-150%); } 95%, 100% { transform: translateX(150%); } }
+@keyframes tli-route-flow { to { stroke-dashoffset: -100; } }
+@keyframes tli-flight-draw { to { stroke-dashoffset: 0; } }
+@keyframes tli-plane-fly { from { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } to { offset-distance: 100%; opacity: 1; } }
+@keyframes tli-logo-resolve { from { opacity: 0; filter: blur(7px); transform: translateY(14px); } to { opacity: 1; filter: blur(0); transform: none; } }
+@keyframes tli-intro-exit { to { opacity: 0; transform: translateY(-16px); visibility: hidden; } }
+@media (hover: hover) and (pointer: fine) { .tli-card:hover { transform: perspective(900px) translateY(-4px) rotateX(2deg); box-shadow: 0 18px 32px -14px #073b5333; } }
+@media (max-width: 650px) {
+  .tli-page { padding: 18px 18px 12px; }
+  .tli-header-top { padding-bottom: 16px; }
+  .tli-brand { width: 152px; }
+  .tli-location { font-size: 7px; gap: 4px; }
+  .tli-header-copy { padding: 26px 0 27px; }
+  .tli-header h1 { font-size: 37px; }
+  .tli-header p { font-size: 11px; margin-top: 11px; }
+  .tli-eyebrow { font-size: 7px; letter-spacing: .12em; }
+  .tli-header-route { width: 104px; right: -2px; top: 38px; opacity: .55; }
+  .tli-team-label { padding: 13px 0; }
+  .tli-section-label { font-size: 8px; }
+  .tli-team-label > span { font-size: 7px; gap: 5px; }
+  .tli-team-grid { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+  .tli-card { padding: 17px 21px 18px; }
+  .tli-card-top { min-height: 36px; }
+  .tli-card-top > img { width: 92px; }
+  .tli-person { margin-top: 14px; }
+  .tli-person h3 { font-size: 24px; }
+  .tli-actions { margin-top: 13px; }
+  .tli-actions > a { font-size: 11px; }
+  .tli-footer nav a { font-size: 9px; }
+  .tli-footer > p { font-size: 8px; }
+}
+@media (max-width: 350px) {
+  .tli-page { padding-inline: 14px; }
+  .tli-brand { width: 130px; }
+  .tli-header h1 { font-size: 33px; }
+  .tli-header-route { width: 85px; opacity: .35; }
+  .tli-person h3 { font-size: 21px; }
+  .tli-card { padding-inline: 17px; }
+  .tli-actions > a { font-size: 10px; gap: 5px; }
+  .tli-card-top > img { width: 82px; }
+  .tli-card-top > span { font-size: 9px; }
+  .tli-flight-scene { transform: scale(.73); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tli-page *, .tli-page *::before, .tli-page *::after { animation: none !important; transition: none !important; }
+  .tli-entrance { display: none; }
+}

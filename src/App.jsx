@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom'
 import CardsPage from './pages/Cards'
 import AsesoresPage from './pages/Asesores'
 import FastwayPage from './pages/Fastway'
+
+const TliPage = lazy(() => import('./pages/Tli'))
 
 export default function App() {
   return (
@@ -14,6 +16,10 @@ export default function App() {
       <Route path='/fastway.html' element={<FastwayPage />} />
       <Route path='/asesorias-fastway' element={<Navigate to='/asesores-fastway' replace />} />
       <Route path='/fastway' element={<Navigate to='/asesores-fastway' replace />} />
+      <Route path='/team-tli' element={<Suspense fallback={null}><TliPage /></Suspense>} />
+      <Route path='/tli.html' element={<Suspense fallback={null}><TliPage /></Suspense>} />
+      <Route path='/asesores-tli' element={<Navigate to='/team-tli' replace />} />
+      <Route path='/tli' element={<Navigate to='/team-tli' replace />} />
       <Route
         path='/asesores-greenway'
         element={<AsesoresPage variante='greenway' />}

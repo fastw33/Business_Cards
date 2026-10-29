@@ -1,5 +1,8 @@
 {
   "rewrites": [
+    { "source": "/team-tli", "destination": "/tli.html" },
+    { "source": "/asesores-tli", "destination": "/tli.html" },
+    { "source": "/tli", "destination": "/tli.html" },
     { "source": "/asesores-fastway", "destination": "/fastway.html" },
     { "source": "/asesorias-fastway", "destination": "/fastway.html" },
     { "source": "/fastway", "destination": "/fastway.html" },

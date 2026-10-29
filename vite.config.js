@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         fastway: fileURLToPath(new URL('./fastway.html', import.meta.url)),
+        tli: fileURLToPath(new URL('./tli.html', import.meta.url)),
       },
     },
   },
